@@ -47,8 +47,9 @@ ENV PATH=/var/lib/pyenv/shims:/var/lib/rbenv/shims:/var/lib/nodenv/shims:$PATH
 
 RUN rbenv global 3.4.7 && nodenv global 24.11.1
 
-## install kilo code
+## install ai agent
 RUN npm install -g @kilocode/cli && nodenv rehash
+RUN npm install -g @anthropic-ai/claude-code && nodenv rehash
 
 ## configure docker cli
 RUN echo "alias docker='sudo docker'" >> ~/.bashrc
