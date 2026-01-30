@@ -48,8 +48,10 @@ ENV PATH=/var/lib/pyenv/shims:/var/lib/rbenv/shims:/var/lib/nodenv/shims:$PATH
 RUN rbenv global 3.4.7 && nodenv global 24.11.1
 
 ## install ai agent
+RUN npm install -g opencode-ai && nodenv rehash
 RUN npm install -g @kilocode/cli && nodenv rehash
 RUN npm install -g @anthropic-ai/claude-code && nodenv rehash
+RUN curl -LsSf https://mistral.ai/vibe/install.sh | bash
 
 ## configure docker cli
 RUN echo "alias docker='sudo docker'" >> ~/.bashrc
